@@ -15,6 +15,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "deploy": "yarn build && surge build/ http://versatile.surge.sh",
     "eject": "react-scripts eject"
   }
 }
