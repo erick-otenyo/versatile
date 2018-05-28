@@ -18,12 +18,11 @@ const Wrapper = styled.div`
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { contentOpen: true };
+    this.state = { contentOpen: false };
   }
 
-  handleOnContentButtonClose = () => {
+  handleOnContentClick = () => {
     this.setState({ contentOpen: !this.state.contentOpen });
-    window.dispatchEvent(new Event('resize'));
   };
   render() {
     const { contentOpen } = this.state;
@@ -33,8 +32,12 @@ class App extends Component {
         <Wrapper contentOpen={contentOpen} className="grid-x">
           <Search />
           <Map contentOpen={contentOpen} />
-          <SideBar contentOpen={contentOpen} header="Sidebar" />
-          {contentOpen && <Content onClose={this.handleOnContentButtonClose} />}
+          <SideBar
+            contentOpen={contentOpen}
+            onClick={this.handleOnContentClick}
+            header="Sidebar"
+          />
+          <Content open={contentOpen} onClose={this.handleOnContentClick} />
         </Wrapper>
       </div>
     );

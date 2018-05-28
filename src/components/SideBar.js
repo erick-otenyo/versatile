@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const height = ({ contentOpen }) =>
-  contentOpen ? 'calc(100vh - 4rem)}' : 'calc(60vh - 3.25rem)';
+  contentOpen ? 'calc(60vh - 3.25rem)' : 'calc(100vh - 4rem)}';
 
 const Wrapper = styled.div`
   z-index: 2;
@@ -23,13 +23,13 @@ const Wrapper = styled.div`
 
 const HeaderTitle = styled.h5``;
 
-const SideBar = ({ header, contentOpen }) => {
+const SideBar = ({ header, contentOpen, onClick }) => {
   return (
     <Wrapper
       contentOpen={contentOpen}
       className="cell medium-3 large-2 large-order-1 show-for-medium"
     >
-      <HeaderTitle>{header}</HeaderTitle>
+      <HeaderTitle onClick={onClick}>{header}</HeaderTitle>
     </Wrapper>
   );
 };

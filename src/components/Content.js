@@ -14,15 +14,18 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const Content = props => {
-  return (
-    <React.Fragment>
-      <CloseButton onClose={props.onClose} />
-      <ContentWrapper className="cell large-5 large-order-3">
-        <h5>Hello</h5>
-      </ContentWrapper>
-    </React.Fragment>
-  );
+const Content = ({ open, onClose }) => {
+  if (open) {
+    return (
+      <React.Fragment>
+        <CloseButton onClose={onClose} />
+        <ContentWrapper className="cell large-5 large-order-3">
+          <h5>Hello</h5>
+        </ContentWrapper>
+      </React.Fragment>
+    );
+  }
+  return null;
 };
 
 Content.propTypes = {

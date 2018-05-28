@@ -9,21 +9,40 @@ const Map = ReactMapboxGl({
 
 const height = ({ contentOpen }) =>
   contentOpen
-    ? '@media print, screen and (min-width: 40em) {height: calc(100vh - 4rem)}'
-    : '';
+    ? ''
+    : '@media print, screen and (min-width: 40em) {height: calc(100vh - 4rem)}';
 
 const Wrapper = styled.div`
   height: 60vh;
   ${height};
-  @media print, screen and (min-width: 40em) {
-    height: calc(100vh - 4rem);
-  }
   @media screen and (min-width: 64em) {
     height: 100%;
   }
 `;
 
 class MainMap extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mapLoaded: false,
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (
+      this.state.mapLoaded &&
+      nextProps.contentOpen !== this.props.contentOpen
+    ) {
+      window.dispatchEvent(new Event('resize'));
+      // this.map.resize();
+    }
+  }
+
+  onStyleLoad = m => {
+    this.map = m;
+    this.setState({ mapLoaded: true });
+  };
+
   render() {
     return (
       <Wrapper
