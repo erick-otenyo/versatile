@@ -17,24 +17,32 @@ const CloseButtonContainer = styled.div`
 `;
 
 const CloseButton = styled.button`
-  color: #6b717b;
-  font-size: 2rem;
-  line-height: 1;
-  position: relative;
-  margin: 0;
-  width: 1em;
+  vertical-align: middle;
+  font-family: inherit;
+  -webkit-appearance: none;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
   cursor: pointer;
-  outline: none;
+  display: inline-block;
+  position: absolute;
+  background-color: #fafafa;
+  color: #fc5b5b;
+  margin: 0 0 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.3rem;
+  line-height: 1;
+  text-align: center;
+  top: 50vh;
+  right: 0;
+  z-index: 3;
+  font-size: 1.25rem;
+  padding: 0.4em 0.5em;
   @media screen and (min-width: 64em) {
-    display: block;
-    position: fixed;
-    z-index: 3;
-    top: 4.5rem;
-    right: 41.66667%;
-    background-color: White;
-    margin-right: -4px;
-    padding: 0 0.375rem 0.1875rem;
-    box-shadow: -4px 4px 0 rgba(0, 0, 0, 0.1);
+    padding: 4px 0 4px 8px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    top: 0.625rem;
+    right: calc(41.66667% + 8px);
+    box-shadow: 8px 0 0 0 #fafafa, 0 0 0 4px rgba(0, 0, 0, 0.1);
   }
 `;
 

@@ -29,12 +29,11 @@ class MainMap extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (
-      this.state.mapLoaded &&
-      nextProps.contentOpen !== this.props.contentOpen
-    ) {
-      window.dispatchEvent(new Event('resize'));
-      // this.map.resize();
+    if (this.state.mapLoaded) {
+      if (nextProps.contentOpen !== this.props.contentOpen) {
+        // window.dispatchEvent(new Event('resize'));
+        this.map.resize();
+      }
     }
   }
 
@@ -56,7 +55,7 @@ class MainMap extends Component {
           }}
           // eslint-disable-next-line
           style="mapbox://styles/mapbox/streets-v8"
-          onStyleLoad={c => (this.map = c)}
+          onStyleLoad={this.onStyleLoad}
         />
       </Wrapper>
     );
