@@ -35,14 +35,9 @@ class MainMap extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (
-      this.state.mapLoaded &&
-      nextProps.contentOpen !== this.props.contentOpen
-    ) {
-      console.log('blaaaaaaaaaaa');
-      // window.dispatchEvent(new Event('resize'));
-      // this.map.resize();
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.mapLoaded) {
+      this.map.resize();
     }
   }
 
@@ -62,7 +57,7 @@ class MainMap extends Component {
           }}
           // eslint-disable-next-line
           style="mapbox://styles/mapbox/streets-v8"
-          onStyleLoad={c => (this.map = c)}
+          onStyleLoad={this.onStyleLoad}
         >
           <ZoomControl
             style={{
