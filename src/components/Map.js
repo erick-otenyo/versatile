@@ -10,7 +10,8 @@ const Map = ReactMapboxGl({
     'pk.eyJ1IjoiZXJpY2tvdGVueW8iLCJhIjoiY2owYXlsb2kxMDAwcjJxcDk3a2Q0MmdpZSJ9.GJQzHfNMElZ7OhW_HbnaXw',
 });
 
-const height = ({ contentOpen }) => (contentOpen ? '50vh' : '100%');
+const height = ({ contentOpen }) =>
+  contentOpen ? '50vh' : 'calc(100vh - 4rem)';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -57,8 +58,11 @@ class MainMap extends Component {
           }}
           // eslint-disable-next-line
           style="mapbox://styles/mapbox/streets-v8"
+          center={[37.8369140625, 0.5163504323777589]}
+          zoom={[6]}
           onStyleLoad={this.onStyleLoad}
         >
+          {/* other map layers will go here */}
           <ZoomControl
             style={{
               boxShadow: '0 0 0 2px rgba(0, 0, 0, 0.1)',

@@ -3,18 +3,19 @@ import styled from 'styled-components';
 // import PropTypes from 'prop-types';
 
 const ContentWrapper = styled.div`
-  flex: 0 0 auto;
   position: relative;
   z-index: 2;
   min-height: calc(50vh - 4rem);
   background-color: #fafafa;
-  padding: 1rem 1rem 4rem;
-  box-shadow: 0 -4px 0 0 rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  overflow-y: auto;
+  box-shadow: -4px 0 0 0 rgba(0, 0, 0, 0.1);
   @media screen and (min-width: 64em) {
     box-shadow: -4px 0 0 0 rgba(0, 0, 0, 0.1);
     overflow: visible;
     width: 41.66667%;
     overflow-y: auto;
+    height: calc(100%);
     max-height: 100%;
     overflow-x: hidden;
   }
@@ -24,11 +25,20 @@ const ContentWrapper = styled.div`
   }
 `;
 
+const Lead = styled.p`
+  font-size: 1.5rem;
+  line-height: 1.4;
+  text-align: center;
+`;
+
 const Content = ({ open, onClose }) => {
   if (open) {
     return (
       <ContentWrapper>
-        <h5>Hello</h5>
+        <Lead>Welcome.</Lead>
+        <Lead>
+          Use this section to display dynamic content based on your data
+        </Lead>
       </ContentWrapper>
     );
   }

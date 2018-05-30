@@ -21,11 +21,28 @@ injectGlobal`
     color: #1a2a2a;
     max-width: 100vw;
     max-height: 100vh;
-    overflow: hidden;
   }
   
   div {
       padding:0;
       margin:0;
-  }   
+  }
+  a {
+    background-color: transparent;
+    line-height: inherit;
+    color: #ae561f;
+    cursor: pointer;
+    text-decoration: none;
+  } 
+
+  a img {
+    border: 0;
+  }
+
+  img {
+    border-style: none;
+    vertical-align: middle;
+    max-width: 100%;
+  }
+
 `;

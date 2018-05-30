@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// "top: 180px;right: auto; bottom: auto;left:10px;position: absolute,"
+// "top: 10px;right: auto; bottom: auto;left:10px;position: absolute,"
 
 const UL = styled.ul`
   position: absolute;
@@ -45,17 +45,17 @@ const Title = styled.a`
 const GeographySelector = props => {
   return (
     <UL>
-      <ListItem onClick={() => props.toggleGeography('region')}>
-        <Title active={props.active === 'region' ? true : false}>Regional</Title>
+      <ListItem onClick={() => props.toggleGeography('regionA')}>
+        <Title active={props.active === 'regionA' ? true : false}>Region A</Title>
       </ListItem>
-      <ListItem onClick={() => props.toggleGeography('subcounty')}>
-        <Title active={props.active === 'subcounty' ? true : false}>
-          Subcounty
+      <ListItem onClick={() => props.toggleGeography('regionB')}>
+        <Title active={props.active === 'regionB' ? true : false}>
+          Region B
         </Title>
       </ListItem>
-      <ListItem onClick={() => props.toggleGeography('hospital')}>
-        <Title active={props.active === 'hospital' ? true : false}>
-          Hospital
+      <ListItem onClick={() => props.toggleGeography('regionC')}>
+        <Title active={props.active === 'regionC' ? true : false}>
+          Region C
         </Title>
       </ListItem>
     </UL>
