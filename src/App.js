@@ -2,14 +2,22 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import Header from './components/Header';
-import Search from './components/Search';
 import Map from './components/Map';
-import SideBar from './components/SideBar';
 import Content from './components/Content';
+import CloseButton from './components/CloseButton';
 
-const Wrapper = styled.div`
+import './global-styles';
+
+const Main = styled.div`
+  display: flex;
+  flex-flow: row wrap;
   position: relative;
+  padding: 0;
+  margin: 0;
   z-index: 1;
+  background-color: #fafafa;
+  overflow-y: auto;
+  max-height: 100%;
   @media screen and (min-width: 64em) {
     height: calc(100vh - 4rem);
   }
@@ -18,27 +26,32 @@ const Wrapper = styled.div`
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { contentOpen: false };
+    this.state = { contentOpen: true, activeGeography: 'regionA' };
   }
-
-  handleOnContentClick = () => {
+  toggleContent = () => {
     this.setState({ contentOpen: !this.state.contentOpen });
   };
+  toggleGeography = key => {
+    this.setState({ activeGeography: key });
+  };
   render() {
-    const { contentOpen } = this.state;
+    const { contentOpen, activeGeography } = this.state;
     return (
       <div>
-        <Header title="Versatile Mapp" />
-        <Wrapper contentOpen={contentOpen} className="grid-x">
-          <Search />
-          <Map contentOpen={contentOpen} />
-          <SideBar
+        <Header title="Versatile Map Layout" />
+        <Main contentOpen={contentOpen} className="Main">
+          <Map
             contentOpen={contentOpen}
-            onClick={this.handleOnContentClick}
-            header="Sidebar"
+            activeGeography={activeGeography}
+            toggleGeography={this.toggleGeography}
+            toggleContent={this.toggleContent}
           />
-          <Content open={contentOpen} onClose={this.handleOnContentClick} />
-        </Wrapper>
+          <CloseButton
+            visible={contentOpen}
+            toggleContent={this.toggleContent}
+          />
+          <Content open={contentOpen} />
+        </Main>
       </div>
     );
   }
